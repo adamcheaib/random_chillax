@@ -10,10 +10,13 @@ let time_counter = 0;
 
 let offline_data = [];
 fetch("./data.php").then(r => r.json()).then(data => offline_data.push(data));
+console.log(offline_data);
 
 function click_new_song() {
     const sounds_sources = offline_data[0].sounds.sources;
+    const image_sources = offline_data[0].images;
     time_counter = 0;
+    background_display.style.backgroundImage = `url(./media/${image_sources[0]})`;
     background_display.style.opacity = "100%";
     main_button.style.opacity = "30%";
     main_button.addEventListener("mouseover", (event) => main_button.style.opacity = "100%");
@@ -21,6 +24,7 @@ function click_new_song() {
 
     bgm_music.src = `./sounds/${sounds_sources[0]}`;
     sounds_sources.splice(0, 1);
+    image_sources.splice(0, 1);
 
     setTimeout(() => {
         bgm_music.play();
