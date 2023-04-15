@@ -16,7 +16,7 @@ function click_new_song() {
     const sounds_sources = offline_data[0].sounds.sources;
     const image_sources = offline_data[0].images;
     time_counter = 0;
-    background_display.style.backgroundImage = `url(./media/${image_sources[0]})`;
+    background_display.style.backgroundImage = `url(./media/${image_sources[0]})`; // Make a separate function for the images!
     background_display.style.opacity = "100%";
     main_button.style.opacity = "30%";
     main_button.addEventListener("mouseover", (event) => main_button.style.opacity = "100%");
@@ -37,6 +37,10 @@ function click_new_song() {
             }
         }, 1000);
     }, 1000);
+
+    if (document.body.key == "p") {
+        console.log("oh boi!");
+    }
 };
 
 function space_new_song(event) {
@@ -63,6 +67,10 @@ function space_new_song(event) {
             }, 1000);
         }, 1000);
 
-    }
+    };
+
+    // if (event.key == "ArrowUp") {
+    //     soun
+    // }
 }
 
