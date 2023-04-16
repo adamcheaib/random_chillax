@@ -8,11 +8,16 @@ document.body.addEventListener("keydown", space_new_song);
 
 let time_counter = 0;
 let offline_data = [];
+let intervals = [];
 
 fetch("./data.php").then(r => r.json()).then(data => offline_data.push(data));
 console.log(offline_data);
 
 function click_new_song() {
+    if (intervals.length != 0) {
+        clearInterval(intervals[0]);
+    };
+
     time_counter = 0;
     const sounds_sources = offline_data[0].sounds.sources;
     const sounds_names = offline_data[0].sounds.names;
@@ -41,12 +46,14 @@ function click_new_song() {
                 click_new_song();
             }
         }, 1000);
+        intervals.push(timeInterval);
     }, 1000);
-
-
 };
 
 function space_new_song(event) {
+    if (intervals.length != 0) {
+        clearInterval(intervals[0]);
+    };
     time_counter = 0;
     switch (event.key) {
         case " ":
@@ -76,6 +83,7 @@ function space_new_song(event) {
                         click_new_song();
                     }
                 }, 1000);
+                intervals.push(timeInterval);
             }, 1000); break;
 
         case "ArrowUp": bgm_music.volume += 0.1; break;
