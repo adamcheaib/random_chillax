@@ -74,11 +74,11 @@ body {
 #bottom_info>* {
     grid-row: 1;
     grid-column: 1;
+    font-size: 14px
 }
 
 #bottom_info>#advice {
     justify-self: center;
-    font-size: 1rem;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -86,7 +86,6 @@ body {
 
 #bottom_info>#artist {
     align-self: end;
-    font-size: 1rem;
     font-weight: bold;
     color: white;
 }
